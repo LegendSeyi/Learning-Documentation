@@ -1,0 +1,1232 @@
+The aim of this team is to provide information and decision support. discover insights and share knowledge. track performance and progress on our journey as a data scientist,
+Morealso, share information and opportunities as regard data science, Machine learning and deep learning. 
+Creating a network of profeesional Data scientist and help each other grow.
+Also to solve problems together as a team. complimenting for each other weaknesses as no one is perfect.
+carrying every team members along durind this journey.
+
+jupyter shortcut
+to check code history
+run --> %history -p
+
+
+code to replace item in a string == .replace('old', 'new')
+this with replace red with blue
+
+example:Our code removed the ( character from the beginning of each string. In order to remove both, we'll have to perform the str.replace() twice — once for each character:
+
+nationalities = ['(American)', '(Spanish)', '(French)']
+
+for n in nationalities:
+    clean_open = n.replace("(","")
+    clean_both = clean_open.replace(")","")
+    print(clean_both)
+    
+ouput:::
+
+American
+Spanish
+French
+
+
+The str.title() method returns a copy of the string with the first letter of each word transformed to uppercase (also known as title case).
+
+
+
+
+
+
+
+to replace empty yalue in a list example:
+####
+for value in moma:
+    gender = value[5]
+    gender = gender.title()
+    
+    if not gender:
+        gender = "Gender Unknown/Other"
+    value[5] = gender
+####    
+    
+####    
+for value in moma:
+    nationality = value[2]
+    nationality = nationality.title()
+    
+    if not nationality:
+        nationality = "Nationality Unknown"
+    value[2] = nationality
+    print(nationality)
+    ####
+Working with date and time:::    
+    Calculate the month with the most visitors
+Calculate the most common time when visits occurred
+Calculate summary statistics on visit length and how far ahead visits are booked
+Produce neatly formatted summaries of daily visits
+
+
+
+ex 1
+
+Let's use the datetime.strftime() method to create a formatted frequency table and analyze the appointment dates in our data set. We'll do the following:
+
+Iterate over each of the datetime objects we created on the previous screen
+Create a string containing the month and year from each datetime object
+Create a frequency table for the month/year of the appointments
+
+Let's use the datetime.strftime() method to create a formatted frequency table and analyze the appointment dates in our data set. We'll do the following:
+
+Iterate over each of the datetime objects we created on the previous screen
+Create a string containing the month and year from each datetime object
+Create a frequency table for the month/year of the appointments
+
+
+###
+#the string format we want to use i.e e.g;"September, 2019"
+formt = "%B, %Y"
+# the dictionary we are defining
+visitors_per_month = {}
+#we itirate through the potus data to get the of row 2
+for row in potus:
+    start_date = row[2]
+#    
+    start_str = start_date.strftime(formt)
+    if start_str not in visitors_per_month:
+        visitors_per_month[start_str] = 1
+    else:
+        visitors_per_month[start_str] += 1
+       
+OUTPUT:::
+{'January, 2015': 1248, 'February, 2015': 2165, 'March, 2015': 2262, 'April, 2015': 4996, 'May, 2015': 3013, 'June, 2015': 7743, 'July, 2015': 2930, 'August, 2015': 1350, 'September, 2015': 4416, 'October, 2015': 3669, 'November, 2015': 1133, 'December, 2015': 13029}
+        
+ ####   
+
+ADDITion of datetime
+dt_1 = dt.datetime(1981, 1, 31)
+dt_2 = dt.datetime(1984, 6, 28)
+dt_3 = dt.datetime(2016, 5, 24)
+dt_4 = dt.datetime(2001, 1, 1, 8, 24, 13)
+
+answer_1 = dt_2 - dt_1
+
+answer_2 = dt_3 + dt.timedelta(days=56)
+
+answer_3 = dt_4 - dt.timedelta(seconds= 3600)
+
+print(answer_1)
+print(answer_2)
+print(answer_3)
+
+OUTPUT:::
+1244 days, 0:00:00
+2016-07-19 00:00:00
+2001-01-01 07:24:13
+
+
+
+NUMPY
+The NumPy library takes advantage of a processor feature called Single Instruction Multiple Data (SIMD) to process data faster. SIMD allows a processor to perform the same operation on multiple data points in a single processor cycle:
+
+in numpy, 
+
+dataframe = np.array(data)
+
+so therefore, to sort out items in the dataframe
+
+dataframe[rows, columns]
+e.g
+
+dataframe[1, 4]
+
+################################################################################
+DIFFERENCE BETWEEN FUNCTION AND METHOD
+Before we look at other array methods, let's review the difference between methods and functions. Functions act as stand alone segments of code that usually take an input, perform some processing, and return some output. For example, we can use the len() function to calculate the length of a list or the number of characters in a string.
+eg
+my_list = [21,14,91]
+print(len(my_list))
+
+
+By contrast, methods are special functions that belong to a specific type of object. This means that, for instance, when we work with list objects, there are special functions or methods that we can only use with lists. For example, we can use the list.append() method to add an item to the end of a list. If we try to use that method on a string, we will get an error, like this:
+
+my_string.append(' is the best!')
+
+Copy
+Traceback (most recent call last):
+    File "stdin", line 1, in module
+AttributeError: 'str' object has no attribute 'append'
+
+To remember the right terminology, anything that starts with np (e.g., np.mean()) is a function, and anything expressed with an object (or variable) name first (e.g., trip_mph.mean()) is a method. When both exist, it's up to you to decide which to use, but it's much more common to use the method approach.
+
+Now, let's learn how to use the numpy.genfromtxt() function to read files into NumPy ndarrays. Here is the simplified syntax for the function, and an explanation of the two parameters:
+
+np.genfromtxt(filename, delimiter=None)
+
+Copy
+filename: a positional argument, usually a string representing the path to the text file to read
+delimiter: a named argument, specifying the string used to separate each value
+In this case, because we have a CSV file, the delimiter is a comma. Here's how we'd read in a file named data.csv:
+
+data = np.genfromtxt('data.csv', delimiter=',')
+
+Copy
+Let's read our nyc_taxis.csv file into NumPy next.
+
+
+NUMPY CONTINUE
+Now, let's learn how to use the numpy.genfromtxt() function to read files into NumPy ndarrays. Here is the simplified syntax for the function, and an explanation of the two parameters:
+
+np.genfromtxt(filename, delimiter=None)
+
+
+filename: a positional argument, usually a string representing the path to the text file to read
+delimiter: a named argument, specifying the string used to separate each value
+In this case, because we have a CSV file, the delimiter is a comma. Here's how we'd read in a file named data.csv:
+
+data = np.genfromtxt('data.csv', delimiter=',')
+
+
+Let's read our nyc_taxis.csv file into NumPy next.
+
+We can use the ndarray.dtype attribute to see the internal datatype.
+
+
+boolean IN NUMPY
+The Boolean array acts as a filter, so that the values corresponding to True become part of the result and the values corresponding to False are removed.
+
+#########################EEEGGG
+Let's use Boolean indexing to confirm the number of taxi rides in our data set from the month of January. First, let's select just the pickup_month column, which is the second column in the ndarray:
+
+pickup_month = taxi[:,1]
+
+Next, we use a Boolean operation to make a Boolean array, where the value 1 corresponds to January:
+
+january_bool = pickup_month == 1
+
+Then we use the new Boolean array to select only the items from pickup_month that have a value of 1:
+
+january = pickup_month[january_bool]
+
+
+Finally, we use the .shape attribute to determine how many items are in our january ndarray, which is equal to the number of taxi rides from the month of January. We'll use [0] to extract the value from the tuple returned by .shape:
+
+january_rides = january.shape[0]
+print(january_rides)
+
+####OUTPUT
+800
+
+There are 800 rides in our dataset from the month of January. Let's practice Boolean indexing and determine the number of rides in our data set for February.
+
+
+Boolean arrays become very powerful when we use them for assignment. Let's look at an example:
+a2 = np.array([1, 2, 3, 4, 5])
+a2_bool = a2 > 2
+​
+a2[a2_bool] = 99
+​
+print(a2)
+
+#######OUTPUT
+[ 1  2 99 99 99]
+
+
+
+PANDAS LIBARY
+
+df.loc[row_label, column_label]
+
+
+in pandas, I learnt we have series.value_counts()
+this is used to get the amount of value in a series
+
+in the country column, to know which country occurred  the most. i.e the mode
+i.e  data['country'].value_counts()
+
+
+EXP###
+
+Instructions
+
+By selecting data from f500:
+
+Create a new variable big_movers, with:
+Rows with indices Aviva, HP, JD.com, and BHP Billiton, in that order.
+The rank and previous_rank columns, in that order.
+Create a new variable, bottom_companies with:
+All rows with indices from National Gridto AutoNation, inclusive.
+The rank, sector, and country columns.
+
+
+big_movers = f500.loc[["Aviva", "HP","JD.com", "BHP Billiton"],["rank", "previous_rank"]]
+
+bottom_companies = f500.loc["National Grid":"AutoNation", ["rank", "sector","country"]]
+
+
+
+replacing Zero values with NaN 
+e.g
+import numpy as np
+prev_rank_before = f500["previous_rank"].value_counts(dropna=False).head()
+
+neww = f500["previous_rank"] == 0
+f500.loc[neww, "previous_rank"] = np.nan
+prev_rank_after = f500["previous_rank"].value_counts(dropna = False).head()
+
+
+to get the most number of industry in the USA country and also the most number of sector in china
++++++CODE+++++
+industry_usa = f500["industry"][f500["country"] == "USA"].value_counts().head(2)
+
+sector_china = f500["sector"][f500["country"]== "China"].value_counts().head(3)
+
+
+### DIFfrence between loc and iloc
+loc: label based selection
+iloc: integer position based selection
+
+
+loops for aggregation.
+
+########.unique()
+To identify the unique countries, we can use the Series.unique() method. This method returns an array of unique values from any series. Then, we can loop over that array and perform our operation. Here's what that looks like:
+
+# Create an empty dictionary to store the results
+avg_rev_by_country = {}
+​
+# Create an array of unique countries
+countries = f500["country"].unique()
+​
+# Use a for loop to iterate over the countries
+for c in countries:
+    # Use boolean comparison to select only rows that
+    # correspond to a specific country
+    selected_rows = f500[f500["country"] == c]
+    # Calculate the mean average revenue for just those rows
+    mean = selected_rows["revenues"].mean()
+    # Assign the mean value to the dictionary, using the
+    # country name as the key
+    avg_rev_by_country[c] = mean
+    
+    
+    EXERCISE###############
+    
+    Now it's time for a challenge to bring everything together! In this challenge we're going to add a new column to our dataframe, and then perform some aggregation using that new column.
+
+The column we create is going to contain a metric called return on assets (ROA). ROA is a business-specific metric which indicates a company's ability to make profit using their available assets.
+
+Once we've created the new column, we'll aggregate by sector, and find the company with the highest ROA from each sector. Like previous challenges, we'll provide some guidance in the hints, but try to complete it without them if you can.
+
+
+Create a new column roa in the f500 dataframe, containing the return on assets metric for each company.
+Aggregate the data by the sector column, and create a dictionary top_roa_by_sector, with:
+Dictionary keys with the sector name.
+Dictionary values with the company name with the highest ROA value from that sector.
+
+SOLUTION################
+
+f500.columns
+f500['roa'] = f500['profits'] / f500['assets']
+
+top_roa_by_sector = {}
+sectors = f500['sector'].unique()
+
+for s in sectors:
+    s_sector = f500['sector'] == s
+    sector_companies = f500.loc[s_sector]
+    top_company = sector_companies.sort_values('roa', ascending=False).iloc[0]
+    company_name = top_company['company']
+    top_roa_by_sector[s] = company_name
+    
+    
+#####################DATA CLEANING#########
+    Using the Strip() function for data cleaning
+    
+    str.strip()
+    
+    However, the column labels still have a variety of upper and lowercase letters, as well as parentheses, which will make them harder to work with and read. Let's finish cleaning our column labels by:
+
+Replacing spaces with underscores.
+Removing special characters.
+Making all labels lowercase.
+Shortening any long column names.
+We can create a function that uses Python string methods to clean our column labels, and then again use a loop to apply that function to each label. Let's look at an example:
+
+def clean_col(col):
+    col = col.strip()
+    col = col.replace("(","")
+    col = col.replace(")","")
+    col = col.lower()
+    return col
+​
+new_columns = []
+for c in laptops.columns:
+    clean_c = clean_col(c)
+    new_columns.append(clean_c)
+​
+laptops.columns = new_columns
+print(laptops.columns)
+
+Copy
+Index(['manufacturer', 'model name', 'category', 'screen size', 'screen',
+       'cpu', 'ram', 'storage', 'gpu', 'operating system',
+       'operating system version', 'weight', 'price euros'],
+      dtype='object')
+
+
+Our code:
+
+Defined a function, which:
+Used the str.strip() method to remove whitespace from the start and end of the string.
+Used the str.replace() method to remove parentheses from the string.
+Used the str.lower() method to make the string lowercase.
+Returns the modified string.
+Used a loop to apply the function to each item in the index object and assign it back to the DataFrame.columns attribute.
+Printed the new values for the DataFrame.columns attribute.
+Let's use this technique to clean the column labels in our dataframe, adding a few extra cleaning 'chores' along the way.
+
+
+To do this, we use the Series.astype() method. To convert the column to a numeric dtype, we can use either int or float as the parameter for the method. Since the int dtype can't store decimal values, we'll convert the screen_size column to the float dtype:
+
+laptops["screen_size"] = laptops["screen_size"].astype(float)
+print(laptops["screen_size"].dtype)
+print(laptops["screen_size"].unique())
+
+
+
+To stop us from losing information that helps us understand the data, we can use the DataFrame.rename() method to rename the column from screen_size to screen_size_inches.
+
+Below, we specify the axis=1 parameter so pandas knows that we want to rename labels in the column axis:
+
+laptops.rename({"screen_size": "screen_size_inches"}, axis=1, inplace=True)
+print(laptops.dtypes)
+
+
+#########HOW to EXTRACT A VALUE OF A STRING FROM A COLUMN AND ASSIGNING IT AS NEW COLUMN 
+
+laptops['cpu_manufacturer'] = (laptops['cpu'].str.split().str[0])
+cpu_manufacturer_counts = laptops['cpu_manufacturer'].value_counts()
+
+###################################################MAPPING 
+If your data has been scraped from a webpage or if there was manual data entry involved at some point, you may end up with inconsistent values. Let's look at an example from our os column:
+
+Windows      1125
+No OS          66
+Linux          62
+Chrome OS      27
+macOS          13
+Mac OS          8
+Android         2
+Name: os, dtype: int64
+
+Copy
+We can see that there are two variations of the Apple operating system — macOS — in our dataset: Mac OS and macOS. One way we can fix this is with the Series.map() method. The Series.map() method is ideal when we want to change multiple values in a column, but we'll use it now as an opportunity to learn how the method works.
+
+The most common way to use Series.map() is with a dictionary. Let's look at an example using a series of misspelled fruit:
+HOW TO USE THE MAPPING FUNCTION
+
+We'll create a dictionary called corrections and pass that dictionary as an argument to Series.map():
+mapping_dict = {
+    'Android': 'Android',
+    'Chrome OS': 'Chrome OS',
+    'Linux': 'Linux',
+    'Mac OS': 'macOS',
+    'No OS': 'No OS',
+    'Windows': 'Windows',
+    'macOS': 'macOS'}
+laptops['os'] = laptops['os'].map(mapping_dict)
+
+How to remove null values of both rows and columns for data cleaning
+* Remove any rows that have missing values.
+* Remove any columns that have missing values.
+* Fill the missing values with some other value.
+* Leave the missing values as is.
+
+laptops_no_null_rows = laptops.dropna()
+laptops_no_null_cols = laptops.dropna(axis=1)
+
+or 
+print(laptops["os_version"].value_counts(dropna=False))
+Because we set the dropna parameter to False, the result includes null values. We can see that the majority of values in the column are 10 and missing values are the next most common.
+
+
+USing a boolean to replace to a null object in a cloumn
+value_counts_before = laptops.loc[laptops["os_version"].isnull(), "os"].value_counts()
+laptops.loc[laptops["os"] == "macOS", "os_version"] = "X"
+
+laptops.loc[laptops["os"] == 'No OS', "os_version"] = 'Version Unknown'
+
+value_counts_after = laptops.loc[laptops["os_version"].isnull(), "os"].value_counts()
+
+
+CLEANING A COLUMN
+Convert the values in the weight column to numeric values.
+Rename the weight column to weight_kg.
+Use the DataFrame.to_csv() method to save the laptops dataframe to a CSV file laptops_cleaned.csv without index labels.
+
+###SOLUTION####
+def clean_col(col):
+    col = col.strip()
+    col = col.replace(" ","")
+    col = col.replace("s","")
+    col = col.replace("kg","")
+    col = col.replace("kgs","")
+    col = float(col)
+    return col
+
+new_columns = []
+for element in laptops['weight']:
+    clean_c = clean_col(element)
+    new_columns.append(clean_c)
+    
+laptops['weight'] = new_columns
+
+or EASy WAY 
+laptops["weight"] = laptops["weight"].str.replace("kgs","").str.replace("kg","").astype(float)
+laptops.rename({"weight": "weight_kg"}, axis=1, inplace=True)
+laptops.to_csv('laptops_cleaned.csv',index=False)
+
+
+USING DESCRIBE METHOD
+dataframe.describe(include='all')
+
+
+##############################################################
+VISUALIZATION VISUALIZTION VILSUALIZATION
+
+Because we use lines to connect the points, the graph above is a line graph (also known as a line plot, or line chart; the distinction between graph, plot and chart is ambiguous in the data visualization world, with different authors assigning slightly different meanings to these terms — in this course, we use all three synonymously).
+
+On the top left side of the graph, we see an "1e6" sign — this is scientific notation. Matplotlib changes to scientific notation if one value on the axis needs to be one million or greater. If we want to remove scientific notation, we can use the plt.ticklabel_format(axis, style) function.
+
+plt.plot(month_number, new_cases)
+plt.ticklabel_format(axis='y', style='plain')
+plt.show()
+
+The axis parameter defines which axis to configure — its arguments are the strings 'x', 'y', and 'both'.
+
+The style parameter controls the notation style (plain or scientific). Its arguments are 'sci', 'scientific', and 'plain'.
+
+The next thing we're going to do is use the plt.title() function to add a title to our line graph.
+
+plt.plot(month_number, new_cases)
+plt.ticklabel_format(axis='y', style='plain')
+plt.title('New Reported Cases by Month — Globally')
+plt.show()
+
+The x-axis shows the month number, and the y-axis shows the number of new reported cases. We can show this on our graph by adding a label to each axis — a y-label and an x-label. To add axis labels, we use plt.xlabel() and plt.ylabel().
+
+plt.plot(month_number, new_cases)
+plt.ticklabel_format(axis='y', style='plain')
+plt.title('New Reported Cases By Month (Globally)')
+plt.xlabel('Month Number')
+plt.ylabel('Number Of Cases')
+plt.show()
+
+NOTE
+Generally, a quantity that increases very quickly in the beginning — and then it slows down more and more over time — has a logarithmic growth.
+
+Generally, a quantity that increases slowly in the beginning — but then starts growing faster and faster over time — has exponential growth.
+
+Generally, a quantity that increases constantly over time has linear growth.
+
+def plot_cumulative_cases(country_name):
+    country = who_time_series[who_time_series['Country'] == country_name]
+    plt.plot(country['Date_reported'], country['Cumulative_cases'])
+    plt.title('{}: Cumulative Reported Cases'.format(country_name))
+    plt.xlabel('Date')
+    plt.ylabel('Number of Cases')
+    plt.show()
+
+    
+plot_cumulative_cases('Brazil')
+plot_cumulative_cases('Iceland')
+plot_cumulative_cases('Argentina')
+
+brazil = 'exponential'
+iceland = 'logarithmic'
+argentina = 'exponential'
+
+EXCERCISE
+Plot the evolution of cumulative cases for France, the United Kingdom, and Italy on the same graph.
+Add a legend to the graph using plt.legend(). Use the labels France, The UK, and Italy.
+Run your code without submitting the answer.
+Which country has the greatest number of cases at the end of July? Assign your answer as a string to the variable greatest_july — choose between the strings 'France', 'The UK', and 'Italy'.
+Which country has the lowest number of cases at the end of July? Assign your answer as a string to the variable lowest_july.
+Which country shows the greatest increase during March? Assign your answer as a string to the variable increase_march.
+
+france = who_time_series[who_time_series['Country'] == 'France']
+uk = who_time_series[who_time_series['Country'] == 'The United Kingdom']
+italy = who_time_series[who_time_series['Country'] == 'Italy']
+
+plt.plot(france['Date_reported'], france['Cumulative_cases'],
+         label='France')
+plt.plot(uk['Date_reported'], uk['Cumulative_cases'],
+         label='The UK')
+plt.plot(italy['Date_reported'], italy['Cumulative_cases'],
+         label='Italy')
+plt.legend()
+plt.show()
+
+
+greatest_july = 'The UK'
+lowest_july = 'France'
+increase_march = 'Italy'
+
+VISUALIZATION CONTD TIME SERIES
+
+However, now the dates on the bottom of the graph are overlapping and we can barely read them. To fix this, we can rotate the labels using the plt.xticks() function. The function has a rotation parameter which 
+we can use to control the angle of rotation.
+
+plt.plot(bike_sharing['dteday'], bike_sharing['cnt'])
+plt.xticks(rotation=45)
+plt.show()
+
+The plt.xticks() function takes its name from the little lines on each axis to show unit lengths. These lines are called ticks, and the corresponding labels are tick labels. The x-axis has x-ticks, and the y-axis has y-ticks — there's also a plt.yticks() function.
+
+EXAMPLE OF VISUALIZATION
+import pandas as pd
+import matplotlib.pyplot as plt
+
+bike_sharing = pd.read_csv('day.csv')
+bike_sharing['dteday'] = pd.to_datetime(bike_sharing['dteday'])
+
+plt.plot(bike_sharing['dteday'], bike_sharing['casual'], label='Casual')
+plt.plot(bike_sharing['dteday'], bike_sharing['registered'], label='Registered')
+plt.xticks(rotation=30)
+plt.ylabel('BIkes Rented')
+plt.xlabel('Date')
+plt.title('Bikes Rented: Casual vs. Registered')
+plt.legend()
+plt.show()
+
+TREND TYPE
+We call all of these similarities seasonal trends. In time series data, we sometimes see specific patterns occurring regularly at specific intervals of time — we call this seasonality.
+
+Weather, holidays, school vacations and other factors can often cause seasonality. One popular example is ice-cream sales seasonality, which we can attribute to variations in air temperature: sales are high during summer and low during winter.
+
+Identifying seasonality can be useful for businesses:
+
+They can plan marketing campaigns at the right time.
+They don't need to panic needlessly when the sales are decreasing as a result of seasonality.
+They can hire extra employees right before the period of high activity begins.
+
+There are two kinds of correlation: positive and negative.
+
+Two positively correlated columns tend to change in the same direction — when one increases (or decreases), the other tends to increase (or decrease) as well. On a scatter plot, two positively correlated columns show an upward trend (like in the temp versus cnt plot).
+Not all pairs of columns are correlated. We often see two columns changing together in a way that shows no clear pattern. The values in the columns increase and decrease without any correlation.
+
+As a side note, we often call columns in a dataset variables (different from programming variables). For this reason, you'll often hear people saying that two variables (columns) are correlated (we'll learn more about variables in the first statistics course).
+
+The most popular way to measure correlation strength is by calculating the degree to which the points on a scatter plot fit on a straight line.
+We can measure how well the points fit on a straight line by using the Pearson correlation coefficient — also known as Pearson's r.
+
+Pearson's r values lie between -1.00 and +1.00. When the positive correlation is perfect, the Pearson's r is equal to +1.00. When the negative correlation is perfect, the Pearson's r is equal to -1.00. A value of 0.0 shows no correlation.
+
+#####################################################################
+CORRELATIONS
+To calculate the Pearson's r between any two columns, we can use the Series.corr() method. For instance, this is how we can calculate the two correlations above:
+
+bike_sharing['temp'].corr(bike_sharing['cnt'])
+we can get an overview of the whole dataframe aside the columns
+bike_sharing.corr()
+
+Most often, we're only interested in finding the correlation for just a few columns. For example, what if we only want to see the correlation for the cnt, casual, and registered columns? The DataFrame.corr() method returns a DataFrame, which means we can select the cnt, casual, and registered columns directly.
+
+bike_sharing.corr()[['cnt', 'casual', 'registered']]
+##################################################################################
+
+bike_sharing['weekday'].value_counts().sort_index()
+# We use Series.sort_index() to sort the index in an ascending order
+
+to replace numbers with words on the plot, We can use xticks
+e.g
+plt.bar(weekday_averages['weekday'], weekday_averages['casual'])
+plt.xticks(ticks=[0, 1, 2, 3, 4, 5, 6],
+          labels=['Sunday', 'Monday', 'Tuesday', 'Wednesday',
+                 'Thursday', 'Friday', 'Saturday'])
+plt.show()
+
+######################################################################
+more example codes are!!!
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+bike_sharing = pd.read_csv('day.csv')
+bike_sharing['dteday'] = pd.to_datetime(bike_sharing['dteday'])
+weekday_averages = bike_sharing.groupby('weekday').mean()[['casual', 'registered']].reset_index() # It's not essential to understand how this code works, we'll cover this in a later course
+
+plt.bar(weekday_averages['weekday'], weekday_averages['registered'])
+plt.xticks(ticks = [0, 1, 2, 3, 4, 5, 6], labels = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], rotation=30)
+plt.show()
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+To solve this problem, we can group the unique values into equal intervals. Below, we group the table into ten equal intervals by using the bins=10 argument inside the Series.value_counts() method:
+
+bike_sharing['cnt'].value_counts(bins=10)
+RESULT___
+(4368.0, 5237.2]    137
+(3498.8, 4368.0]    122
+(5237.2, 6106.4]     81
+(6975.6, 7844.8]     79
+(6106.4, 6975.6]     76
+(2629.6, 3498.8]     73
+(1760.4, 2629.6]     71
+(891.2, 1760.4]      62
+(7844.8, 8714.0]     17
+(13.307, 891.2]      13
+Name: cnt, dtype: int64
+
+The unique values are now number intervals. (4368.0, 5237.2] is a number interval. The ( character indicates that the starting number is not included, while the ] indicates that the ending number is included. The interval (4368.0, 5237.2] contains all numbers greater than 4368.0 and less than or equal to 5237.2.
+
+$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+EXAMPLE
+--------------------------
+Generate a grouped frequency table for the registered column.
+
+The table must have 10 intervals.
+The intervals must be sorted in ascending order.
+Assign the table to the registered_freq variable.
+Generate a grouped frequency table for the casual column.
+
+The table must have 10 intervals.
+The intervals must be sorted in an ascending order.
+Assign the table to the casual_freq variable.
+SOLUTION____
+---------------
+import pandas as pd
+import matplotlib.pyplot as plt
+
+bike_sharing = pd.read_csv('day.csv')
+bike_sharing['dteday'] = pd.to_datetime(bike_sharing['dteday'])
+
+registered_freq = bike_sharing['registered'].value_counts(bins=10).sort_index()
+
+HISTOGRAM
+A histogram shows the distribution of the values, and if its shape is symmetrical, then we say we have a symmetrical distribution.
+
+One common symmetrical distribution is the normal distribution (also called Gaussian distribution).
+
+casual_freq = bike_sharing['casual'].value_counts(bins=10).sort_index()
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The Pandas library has other useful visualization methods as well:
+
+Series.plot.bar(): generates a vertical bar plot.
+Series.plot.barh(): generates a horizontal bar plot.
+Series.plot.line(): generates a line plot.
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+If we had to communicate our results to São Paulo's administration, we could report that lack of electricity and flooding cause significant traffic problems. This information can help in choosing which incident type to prioritize solving.
+
+The last thing we're going to look at in this lesson is how traffic slowness changes over the 7:00 – 20:00 time interval.
+
+First, we're going to isolate the data for each day — from Monday to Friday.
+
+da
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+traffic_per_day = {}
+for i, day in zip(range(0, 135, 27), days):
+    each_day_traffic = traffic[i:i+27]
+    traffic_per_day[day] = each_day_traffic
+
+Copy
+We use the zip() function above to iterate over range() and days at the same time.
+
+The traffic_per_day variable is a Python dictionary. It contains five keys: 'Monday', 'Tuesday', 'Wednesday', 'Thursday', and 'Friday'. For each key, we have a DataFrame containing only the data for that specific day. For instance, traffic_per_day['Monday'] has only the data for Monday:
+
+######################################################
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+traffic = pd.read_csv('traffic_sao_paulo.csv', sep=';')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].str.replace(',', '.')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].astype(float)
+
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+traffic_per_day = {}
+for i, day in zip(range(0, 135, 27), days):
+    each_day_traffic = traffic[i:i+27]
+    traffic_per_day[day] = each_day_traffic
+    
+traffic_per_day['Monday'].plot.line(x='Hour (Coded)', y='Slowness in traffic (%)')
+plt.ylim(0, 25)
+plt.show()
+traffic_per_day['Tuesday'].plot.line(x='Hour (Coded)', y='Slowness in traffic (%)')
+plt.ylim(0, 25)
+plt.show()
+traffic_per_day['Wednesday'].plot.line(x='Hour (Coded)', y='Slowness in traffic (%)')
+plt.ylim(0, 25)
+plt.show()
+traffic_per_day['Thursday'].plot.line(x='Hour (Coded)', y='Slowness in traffic (%)')
+plt.ylim(0, 25)
+plt.show()
+traffic_per_day['Friday'].plot.line(x='Hour (Coded)', y='Slowness in traffic (%)')
+plt.ylim(0, 25)
+plt.show()
+
+$$$$$$$$$$$$$$$$$$$ The above code can also be rewritten as a for loop $$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+traffic = pd.read_csv('traffic_sao_paulo.csv', sep=';')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].str.replace(',', '.')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].astype(float)
+
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+traffic_per_day = {}
+for i, day in zip(range(0, 135, 27), days):
+    each_day_traffic = traffic[i:i+27]
+    traffic_per_day[day] = each_day_traffic
+for day in days:
+    traffic_per_day[day].plot.line(x='Hour (Coded)',
+                                   y='Slowness in traffic (%)')
+    plt.title(day)
+    plt.ylim([0, 25])
+    plt.show()
+
+@@@@@@@@@@@ To generate a single plot from monday to friday, We use the plt function @@@@@@@@@@@@@@@@@@@@
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+traffic = pd.read_csv('traffic_sao_paulo.csv', sep=';')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].str.replace(',', '.')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].astype(float)
+
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+traffic_per_day = {}
+for i, day in zip(range(0, 135, 27), days):
+    each_day_traffic = traffic[i:i+27]
+    traffic_per_day[day] = each_day_traffic
+    
+for day in days:
+    plt.plot(traffic_per_day[day]['Hour (Coded)'], traffic_per_day[day]['Slowness in traffic (%)'], label=day)
+    
+plt.legend()
+plt.show()
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Instructions
+
+Create a new figure with figsize=(10,12).
+Create the first five plots using a for loop. Use the zip() function to iterate over both a range (use the range() function) and the days list. For each iteration, do the following:
+Add the proper index number inside plt.subplot(nrows, ncols, index).
+Generate a line plot for each day — Hour (Coded) must be on the x-axis and Slowness in traffic (%) on the y-axis.
+Add the day name as a plot title.
+Bring the plot to a 0-25 range on the y-axis.
+
+Answer
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+traffic = pd.read_csv('traffic_sao_paulo.csv', sep=';')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].str.replace(',', '.')
+traffic['Slowness in traffic (%)'] = traffic['Slowness in traffic (%)'].astype(float)
+
+days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']
+traffic_per_day = {}
+for i, day in zip(range(0, 135, 27), days):
+    each_day_traffic = traffic[i:i+27]
+    traffic_per_day[day] = each_day_traffic
+    
+plt.figure(figsize=(10,12))
+
+for i, day in zip(range(1,6), days):
+    plt.subplot(3, 2, i)
+    plt.plot(traffic_per_day[day]['Hour (Coded)'],
+        traffic_per_day[day]['Slowness in traffic (%)'])
+    plt.title(day)
+    plt.ylim([0,25])
+    
+plt.show()
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&  SEABORN   &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+SEABORN
+
+HOw to use seaborn to plot for multiple 
+
+https://seaborn.pydata.org/generated/seaborn.relplot.html
+
+
+Import seaborn as sns — "sns" is the standard alias.
+Import matplotlib.pyplot as plt — "plt" is the standard alias.
+Call the sns.relplot() function to generate the plot.
+We pass in the housing DataFrame to the data parameter.
+We pass in the column names as strings to parameters x and y.
+By default, the sns.relplot() function generates a scatter plot.
+Call plt.show() to display the graph (this works because Seaborn uses Matplotlib code behind the curtains — just like Pandas).
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice')
+plt.show()
+
+Visually, the graph uses Matplotlib defaults. To switch to Seaborn defaults, we need to call the sns.set_theme() function:
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.set_theme()
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice')
+plt.show()
+
+We need to call the sns.set_theme() function before generating the plot — before calling sns.relplot(). Once we call sns.set_theme(), all subsequent graphs will inherit the Seaborn style — we only need to call this function once.
+
+
+Notice that each dot (also called a marker) on the scatter plot is blue. We can change the color intensity of the dots to represent a new variable.
+
+Below, we use the hue parameter to add the Overall Qual variable on the scatter plot. Recall that Overall Qual describes the quality ratings of the overall material and finish of the house.
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual')
+plt.show()
+
+
+The values in the Overall Qual variable range from one to ten — one is equivalent to "very poor," and ten is equivalent to "very excellent" (per the documentation).
+
+Seaborn matched lower ratings with lighter colors and higher ratings with darker colors. A pale pink represents a rating of one, while black represents a ten. Seaborn also generated a legend to describe which color describes which rating.
+
+Let's say we want the colors to vary between red and green — where dark red means a rating of one and dark green means a rating of ten. We can make this change using the palette parameter with the 'RdYlGn' argument:
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn')
+plt.show()
+
+The argument 'RdYlGn' contains three abbreviations:
+Rd: red
+Yl: yellow
+Gn: green
+
+Another element we can use to represent values is size. A dot can have a color and x- and y-coordinates, but it can also be larger or smaller. Below, we use a size representation to add the Garage Area variable on the graph — we use the size parameter. Recall that Garage Area describes the garage area in square feet.
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn',
+            size='Garage Area')
+plt.show()
+
+To make the size differences more visible, we'll increase the size range — the sizes parameter takes in a tuple specifying the minimum and maximum size.
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn',
+            size='Garage Area', sizes=(1,300))
+plt.show()
+
+The sizes parameter can take in a tuple only if the variable we represent is numerical — Garage Area is a numerical variable. The tuple in sizes represents a range. The minimum value in the range maps to the minimum value in the variable. Similarly, the maximum value in the range maps to the maximum value in the variable.
+To control the sizes for a non-numerical (categorical) variable, we need to use a list or a dict. Instead of specifying the range, we need to specify the sizes for each unique value in the variable.
+The Rooms variable is categorical, and it has two unique values: '7 rooms or more', and '6 rooms or less'. Below, we pass in the list [200,50] to map '7 rooms or more' to a size of 200 and '6 rooms or less' to a size of 50.
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn',
+            size='Rooms', sizes=[200,50])
+plt.show()
+
+If we don't want to control the size, then Seaborn does the size mapping automatically anyway. 
+Another visual property we can exploit is shape. On the graph we've built, each dot has the shape of a circle. Instead of a circle, however, it could have been a triangle, a square, etc.
+More generally, we call the dots on our graphs markers. The marker can take various shapes: circle, triangle, square, etc.
+Below, we add the Rooms variable by changing the shape of the markers. A circle now means a house with seven rooms or more, and an "x" sign represents a house with six rooms or less. To make this change, we use the style parameter.
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn',
+            size='Garage Area', sizes=(1,300),
+            style='Rooms')
+plt.show()
+
+pes, we can check Matplotlib's documentation.
+Below, we add different markers using the markers parameter. Each marker shape has a string representation that we can find in the documentation referenced earlier.
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn',
+            size='Garage Area', sizes=(1,300),
+            style='Rooms', markers=['*','v'])
+plt.show()
+
+Choosing the best markers depends on each graph. For our situation, we need markers that clearly show the small differences in size and color. The star shapes above look nice, but the circles seem to offer a clearer representation in terms of size.
+
+adding new column parameter
+
+We'll add one more variable by spatially separating the graph based on the values in the Year variable. This variable describes the year when a house was built, and it has only two values: 1999 or older and 2000 or newer. For each value, we'll build a separate graph that will display the five variables we've already plotted.
+Below, we add the Year column using the col parameter:
+
+sns.relplot(data=housing, x='Gr Liv Area', y='SalePrice',
+            hue='Overall Qual', palette='RdYlGn',
+            size='Garage Area', sizes=(1,300),
+            style='Rooms', col='Year')
+plt.show()
+
+The graph we built is essentially a scatter plot. However, because it shows the relationships between so many variables, we call it a relational plot.
+
+We can do much more with Seaborn than just creating relational plots. We've shared a few Seaborn tutorials in the resources section of the takeaways to show you what this library can do
+
+
+
+
+
+
+
+
+
+
+
+
+DATA CLEANING
+=======================================
+Outline:
+Choose a problem to solve:
+
+Your ability to speak to your experience working on your project is perhaps even more important than what’s actually on Github. As such, we suggest that you pick a problem that you personally find interesting, especially if it’s in the domain of the particular job you may be pursuing.
+
+Many learners start with datasets they find interesting and derive problems from there. Just be careful to get your data from a trusted source. The following pages features plenty of reputable data sets that are open source that you use for your project:
+Data.gov - A directory of government data downloads
+/r/datasets - A subreddit that has hundreds of interesting datasets
+Awesome datasets - A list of datasets hosted on GitHub
+rs.io - A great blog post with hundreds of interesting datasets
+Find an existing data science project that you find interesting. To be most effective, the approach you take to solving a problem in your project should be unique. However, that doesn’t mean that you have to be the first person to attempt to solve that problem. As long as your project isn’t too similar to other ones out there, you can form a hypothesis on anything from climate change to sports stats. You can find some great projects on the Dataquest community, Kaggle, or Driven Data
+Generate your hypotheses:
+
+This is your attempt to explain a phenomenon based on limited evidence (your dataset). It is a statement you are making about what you observe. An essential characteristic of all hypotheses is that they are testable. You can think of this project as process or experiment that will do only one of two things: support the hypothesis or reject it.
+
+Study the data:
+
+Make sure you have a null hypothesis (the status quo). Ask yourself what variables within your dataset will affect your hypothesis. Is your hypothesis testable with the evidence you have. Do you need to look for a different dataset or alter your hypothesis itself? Make sure you do background research to really understand the context of the data.
+
+Clean the data:
+
+Datasets are rarely uniform and rarely in the format needed to perform analysis. It’s likely that you’ll have to aggregate parts of your dataset in your analysis and account for missing data.
+
+Statistical analysis:
+
+Once you determine if your hypothesis accurately describes the data, you need to frame the hypotheses quantitatively so you can identify trends in the data and eventually make forecasts. You’ll need to test whether the difference or correlation between variables you’re studying was due to random chance.
+
+Visualize the Data and Communicate your results:
+
+Data science is fundamentally about communication. You’ll discover some insight in the data, then figure out an effective way to communicate that insight to others, then sell them on the course of action you propose. One of the most critical skills in data science is being able to tell an effective story using data. An effective story can make your insights much more compelling, and help others understand your ideas.
+
+A story in the data science context is a narrative around what you found, how you found it, and what it means. An example might be the discovery that your company’s revenue has dropped 20% in the last year. It’s not enough to just state that fact — you’ll have to communicate why revenue dropped, and how to potentially fix it.
+
+
+
+
+
+++++++++++++++++++++++++++++++++++++
+ROLE OF DATA ENGINEER
+One of a data engineer's responsibilities is to build the architecture for a data platform that enables data analysts, scientists, and others to query their data effectively. Essentially, a data engineer needs to be able to build and maintain a data pipeline that connects all the pieces of the data ecosystem.
+
+In this lesson, we'll begin learning data engineering. Here are a few takeaways you can expect by the time you finish:
+
+How to write your first computer program
+Basic programming concepts like variables and data types
+Programming operations like arithmetic and string concatenation
+By the end of this course, we'll know how to do the following:
+
+Save values using variables
+Work with numbers and text data
+Read a large dataset into Python and analyze it
+Answer questions using conditional statements
+This lesson doesn't require any prior technical knowledge, so let's get started!
+
+
+
+DATA STORYTELLING ________________________________________________
+To make the changes we want, we'll use matplotlib's object-oriented interface. Matplotlib has two interfaces:
+
+A functional interface: we use functions to create and modify plots.
+An object-oriented (OO) interface: we use methods to create and modify plots.
+We used the functional approach when we called the function plt.barh(). We also used this approach extensively in the Data Visualization Fundamentals course when we created and modified graphs using functions from the matplotlib.pyplot submodule: plt.plot(), plt.scatter(), plt.title(), plt.xlim(), etc.
+
+The functional interface is simpler and easier to use. It comes in handy in the exploratory data visualization workflow, where we need to create graphs fast. But the OO interface offers more power and flexibility in graph editing.
+
+
+
+
+++++++++++++++++++
+Using Figures and axes
+
+The matplotlib.figure.Figure object acts as a canvas on which we can add one or more plots. The matplotlib.axes._subplots.AxesSubplot object is the actual plot. In short, we have two objects:
+
+The Figure (the canvas)
+The Axes (the plot; don't confuse with "axis," which is the x- and y-axis of a plot).
+To create a bar plot, we use the Axes.bar() method and call plt.show():
+
+fig, ax = plt.subplots()
+ax.bar(['A', 'B', 'C'],
+       [2, 4, 16])
+plt.show()
+
+
+
+We know that a large part of our audience will read the article on a mobile device. This means our graph needs to have mobile-friendly proportions: small width, larger height. Our graph currently has a small height and a larger width.
+
+To change the proportions, we can use the figsize parameter inside the plt.subplots(figsize=(width, height)) function:
+
+fig, ax = plt.subplots(figsize=(3, 5))
+ax.barh(['A', 'B', 'C'],
+        [2, 4, 16])
+plt.show()
+
+
+The next design principle we're going to learn has to do with maximizing data elements on a graph. Generally, a graph has three elements:
+
+Data elements: the numbers and the categories visually represented and the relationships between them.
+Structural elements: the axes, the ticks, the legend, the grid, etc.
+Decorations: extra colors, shapes, artistic drawings etc.
+
+
+Erasing Non-Data Ink
+To maximize data ink, we can do the following:
+
+Erase non-data ink
+Erase redundant data-ink
+
+
+
+
+using group by
+
+
+grouped = happiness2015.groupby('Region')
+
+aus_nz = grouped.get_group('Australia and New Zealand')
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++
+EXERCISE ON GROUPBY
+
+For the following exercise, use the result from the dictionary returned by grouped.groups shown below:
+
+'North America': Int64Index([4, 14], dtype='int64'
+
+Prove that the values for the "North America" group in the dictionary returned by grouped.groups above correspond to countries in North America in the happiness2015 DataFrame.
+Use the snippet above to identify the indices of the countries in happiness2015 that belong to the North America group.
+Use the indices to assign just the countries in North America in happiness2015 to north_america.
+Use the GroupBy.get_group() method to select the data for the North America group only. Assign the result to na_group.
+Use the following code to compare north_america and na_group: north_america == na_group. Assign the result to equal.
+
+___SOLUTION___
+grouped = happiness2015.groupby('Region')
+
+
+#print(grouped.groups)
+
+north_america = happiness2015.iloc[[4,14]]
+
+na_group = grouped.get_group('North America')
+
+equal = north_america == na_group
+solved______
+
+
+
+
+
+
+A basic example of aggregation is computing the number of rows for each of the groups. We can use the GroupBy.size() method to confirm the size of each region group:
+grouped = happiness2015.groupby('Region')
+print(grouped.size())
+
+
+
+In the previous exercise, we grouped happiness2015 by region and calculated the mean of each region for each numeric column:
+
+grouped = happiness2015.groupby('Region')
+grouped_mean = grouped.mean()
+
+___EXERCISE___
+Select only the Happiness Score column from grouped. Assign the result to happy_grouped.
+Use the GroupBy.mean() method to compute the mean of happy_grouped. Assign the result to happy_mean.
+
+Answer
+grouped = happiness2015.groupby('Region')
+happy_grouped = grouped['Happiness Score']
+happy_mean = happy_grouped.mean()
+
+
+____________________________ USING AGGREGATION __________________________________
+However, what if we want to apply more than one kind of aggregation to a column at a time?
+For example, suppose we want to calculate both the mean and the maximum happiness score for each region. Using what we've learned so far, we'd first have to calculate the mean, like we did above, and then calculate the maximum separately.
+Luckily, however, the GroupBy.agg() method can perform both aggregations at once. We can use the following syntax:
+
+Groupby.agg([Func_name1, func_name2, func_name3])
+
+____Example____
+Apply the GroupBy.agg() method to happy_grouped. Pass a list containing np.mean and np.max into the method. Assign the result to happy_mean_max.
+As noted above, passing 'mean' and 'max' into the GroupBy.agg() method will also return the same results. However, for answer-checking purposes, you'll have to use np.mean and np.max.
+We've also created a custom function named dif to calculate the difference between the mean and maximum values. Pass dif into the GroupBy.agg() method. Assign the result to mean_max_dif.
+
+Answer___
+import numpy as np
+grouped = happiness2015.groupby('Region')
+happy_grouped = grouped['Happiness Score']
+def dif(group):
+    return (group.max() - group.mean())
+
+happy_mean_max = happy_grouped.agg([np.mean, np.max])
+
+mean_max_dif = happy_grouped.agg(dif)
+
+
+
+
+
+
+
+________________PIVOT TABLE____________
+How to use the pivot table
+Index and values are actually arguments used in another method used to aggregate data — the DataFrame.pivot_table() method. This df.pivot_table() method can perform the same kinds of aggregations as the df.groupby method and make the code for complex aggregations easier to read.
+If you're an Excel user, you may have already drawn comparisons between the groupby operation and Excel pivot tables. If you've never used Excel, don't worry! You don't need to know Excel for this lesson. We'll demonstrate the pivot_table() method next.
+Below, we use the df.pivot_table() method to perform the same aggregation as above.
+
+pv_happiness = happiness2015.pivot_table(values='Happiness Score', index='Region', aggfunc=np.mean)
+
+
+Keep in mind that this method returns a DataFrame, so we can apply normal DataFrame filtering and methods to the result. For example, let's use the DataFrame.plot() method to create a visualization. Note that we exclude aggfunc below because the mean is the default aggregation function of df.pivot_table().
+
+pv_happiness = happiness2015.pivot_table('Happiness Score', 'Region')
+pv_happiness.plot(kind='barh', title='Mean Happiness Scores by Region', xlim=(0,10), legend=False)
+plt.show()
+
+
+
+The pivot_table method also allows us to aggregate multiple columns and apply multiple functions at once.
+
+Below, we aggregate both the "Happiness Score" and "Family" columns in happiness2015 and group by the "Region" column:
+
+grouped_by_region = happiness2015.pivot_table(['Happiness Score', 'Family'], 'Region')
+
+
+To apply multiple functions, we can pass a list of the functions into the aggfunc parameter:
+
+mean_min_max_by_region = happiness2015.pivot_table('Happiness Score', 'Region', aggfunc=[np.mean, np.min , np.max], margins=True)
+
+
+
+______Exercise_______
+Instructions
+
+Use the df.groupby() method to calculate the minimum, maximum, and mean family and happiness scores for each region in happiness2015.
+Group happiness2015 by the Region column.
+Select the Happiness Score and Family columns. Assign the result to grouped.
+Apply the GroupBy.agg() method to grouped. Pass a list containing np.min, np.max, and np.mean into the method.
+Assign the result to happy_family_stats.
+Use the pivot_table method to return the same information, but also calculate the minimum, maximum, and mean for the entire Family and Happiness Score columns.
+The aggregation columns should be Happiness Score and Family.
+The column to group by is Region.
+The aggregation functions are np.min, np.max, and np.mean.
+Set the margins parameter equal to True.
+Assign the result to pv_happy_family_stats.
+
+SOlution______
+group_gen = happiness2015.groupby('Region')
+
+grouped = group_gen[['Happiness Score', 'Family']]
+
+happy_family_stats = grouped.agg([np.min, np.max, np.mean])
+
+pv_happy_family_stats = happiness2015.pivot_table(['Happiness Score','Family'], 'Region', aggfunc=[np.min, np.max , np.mean], margins=True)

@@ -1,0 +1,169 @@
+MACHINE LEARNING DOCUMENTATION BY ADEYEMI OLUWASEYI
+
+############
+@@@@@@_____________STEPS___________@@@@@@@@@@@
+
+ - Data collection
+ - data Exploration & Wrangling
+ - Feature Engineering
+ - Build and Train a Model
+ - Evaluate Preformance of the model
+ - fine-tune the model 
+
+
+to perform or deplore a model that can predict the output of a future dataset
+
+we need to have a dataset that we will be using
+we need to ensure the data is as clean as possible to avoid error or to have a close range accuracy
+
+if the data is too too large we can create a ramdom sample from it by using df.sample(number of sample, random_state = 1)
+the random state help us to retain the sample we have collected without refreshing or generating new sample e.g; df.sample(10, random_state=1)
+
+we will be using the sklearn library
+
+note that the dataset has to be divided into two set before we fit it into our model
+Let say we want to predict the price of houses, and in the data set, we have a column "price"
+
+we will first split the data into two, which is test and train...
+
+The test is the input data, we will asign it to the variable called X.
+the test should not have the column "price". we will drop the price column
+the we assign it to X
+
+
+the train is the output data, it is the column we want to predict.
+we will assign it to variable y
+the train data only contains the "price" column of the data set
+
+after we have assign this values,
+
+we will import the test_train_split from sklearn
+---                                                 
+from sklearn.model_selection import train_test_split
+X = df.drop(["price"], axis=1)
+y = df["price"]
+
+the axis=1 means we are drop a column while axis=0 means a row.
+
+###################
+NOTE
+============
+data = pd.get_dummies(df, columns=['sex'])
+
+THIS CODE IS USED TO CONVERT CATEGORICAL COLUMN INTO NUMERICAL OF ZERO AND ONE
+
+
+#########################
+########### THE TEST TRAIN SPLIT ###########
+
+
+    The function will split the dataset into a training set and a test set based on a proportion that we decide. Usually, the test set's size is about 15 to 20 percent of the dataset's. Different factors, such as the original dataset's size, can also play a part in deciding that percentage.
+        The function splits the data randomly into each set. We'll learn why that's relevant in a future lesson.
+        The output of train_test_split() is a list containing 4 elements:
+            The training set features.
+            The test set features.
+            The training set labels.
+            The test set labels.
+
+Note that there can be, and usually are, multiple steps as part of preparing the data. For example, we might have to clean our data before we train a model on it. We'll cover this topic in more detail in a later lesson.
+
+&&&&&&&&& to use the test_train_split &&&&&&&&&&&&&&
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state = 417)
+
+&&&& the random_state set the sample to be fixed and not to be refreshed
+
+
+
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scikit-learn offers many machine learning models. We can pick any one of the classification models and use it out of the box.
+
+That's exactly what we'll do. We'll use the Linear Support Vector Classification model. We can check the documentation to see what kind of input parameters it can take. scikit-learn makes it easy for us to use the model without needing to understand the minute details of the algorithm. 
+There are only two steps for building and training the model:
+
+    We first instantiate the model. This is similar to how we would instantiate a Python class.
+        This step doesn't take any training data as input. We can, however, define and set the values for the parameters we saw in the documentation linked above.
+
+    We fit the model onto the training data features (X) and labels (y). Fitting the model is the same as training our model.
+
+
+the below code shows how we can fit the data into a model, but we are currrently using the Linearsvc model..... THIS MODEL IS A CLASSIFIER
+==== WE IMPORT THE MODEL FROM SKLEARN
+from sklearn.model_selection import train_test_split
+from sklearn.svm import LinearSVC
+
+==== WE SPLIT THE DATA SET INTO A TEST AND TRAIN....
+==== THE TEST WILL ONLY BE 15% OF THE DATA SET... THAT IS THE INPUT DATA
+==== THE TRAIN DATA IS 85% OF THE DATASET,... THAT IS THE OUTPUT DATA
+ ==== X_test = The input data of 15% without the output column
+===== X_train = The input data of 85% without the output column
+===== y_test = the output column of 15% of the 'expense' column only.. the machine model will learn this to use as reference
+====== y_train = The output column of 'expense' of 85% of the dataset column 'expenses'
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state = 417)
+
+
+#### we fit in our data into the model) #########
+model = LinearSVC(penalty="l2", loss="squared_hinge", C=10, random_state=417)
+
+THE CODE BELOW FIT IN OUR MODEL, WE FEED THE MODEL WITH THE TRAINING DATA OF 85% SO THAT IT CAN SEE MORE DATA TO LEARN FROM
+model.fit(X_train, y_train)
+
+
+WE CAN USE THE CODE BELOW TO CONFIRM THE ACCURACY OF THE MODEL
+test_accuracy = model.score(X_test, y_test)
+print(test_accuracy)
+
+it print out the result in percentage 0.8 means 80%
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&\
+#########################################################################################################
+One of the most common ways to evaluate a classifier is to look at how accurate its predictions are. For a supervised learning task, we already know which class a particular observation belongs to.
+
+We can use our model to predict the labels of our test data. We can then calculate the accuracy of our model by comparing those predictions to the actual labels. But we don't need to do that all by ourselves.
+
+scikit-learn provides a method score() that can calculate that accuracy.
+
+Our model got an accuracy score of approximately 0.8. That means roughly 80% of our predictions were correct.
+
+That's a pretty good result, but building machine learning models is an iterative process. We can try to improve upon our result.
+
+
+???????????????????????????????????????????????????????????????????????????????????????????????????
+When we instantiated the LinearSVC model, we defined the following parameters:
+
+    penalty="l2"
+    loss="squared_hinge"
+    C=10
+
+While we don't know what these values imply for our model, we can experiment with them.
+
+In an attempt to improve upon our result, we will:
+
+    Change the values to one of the above parameters.
+    Add and set another parameter from the documentation.
+
+
+
+In machine learning, there are different types of models, including:
+
+    Classification models: These models are used to classify data into predefined categories or classes. Classification models are often used in applications such as spam filtering, image recognition, and sentiment analysis.
+
+    Regression models: These models are used to predict numerical values or continuous variables based on a set of input features. Regression models are often used in applications such as stock price prediction and weather forecasting.
+
+    Clustering models: These models are used to group similar data points together based on their characteristics. Clustering models are often used in applications such as customer segmentation and anomaly detection.
+
+    Dimensionality reduction models: These models are used to reduce the number of input features in a dataset while preserving the most important information. Dimensionality reduction models are often used in applications such as image compression and data visualization.
+
+    Recommendation models: These models are used to recommend items or content to users based on their preferences and behavior. Recommendation models are often used in applications such as personalized product recommendations and movie recommendations.
+
+    Neural network models: These models are used to learn complex patterns and relationships in data by simulating the structure and function of the human brain. Neural network models are often used in applications such as speech recognition and natural language processing.
+
+
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+pip install missingno
+the library helps to easily visualize Null values in a data set
+
+import missingno as mno
+
+mno.bar(df)
+
